@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Example for human/AI review; inspect_inputs.py does not load this file.",
+  "profile_name": "local-instrument-profile",
+  "bundled_fallback": {
+    "reference": "references/jeol-cryoarm300-default-profile.md",
+    "offer_when_acquisition_or_instrument_or_grid_evidence_missing": true,
+    "adopted_by_user": false,
+    "adoption_scope": null,
+    "status_if_adopted_without_batch_evidence": "user-adopted-default-not-batch-verified"
+  },
+  "instrument": {
+    "manufacturer_and_model": null,
+    "location": null,
+    "voltage_kv": null,
+    "spherical_aberration_mm": null,
+    "detector_model": null,
+    "evidence": null,
+    "confirmed_at": null
+  },
+  "sample_source_convention": {
+    "enabled": false,
+    "obtained_by": null,
+    "organism_name": null,
+    "taxonomy_id": null,
+    "scope": "requires explicit user confirmation for this sample and current form",
+    "confirmed_at": null
+  },
+  "batch": {
+    "sample_id": null,
+    "actual_acquisition_files": [],
+    "test_acquisition_files": [],
+    "cryosparc_project_and_job": null,
+    "deposition_session_id": null,
+    "archive_accession": null
+  },
+  "permissions": {
+    "cryosparc": "read-only",
+    "onedep": "fill-and-save-only-when-authorized",
+    "formal_submission": false
+  }
+}

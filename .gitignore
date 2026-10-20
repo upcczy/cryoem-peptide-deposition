@@ -1,0 +1,45 @@
+# Local configuration and evidence are never release inputs.
+config.local.json
+.env
+.env.*
+!.env.example
+records/
+private/
+screenshots/
+*.local.json
+*.local.md
+
+# Generated outputs: rebuild from the reviewed source modules.
+dist/
+deposition-handbook.md
+manifest.json
+
+# Python and editor state.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+coverage.xml
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Real experimental files belong outside the repository.
+*.mrc
+*.mrcs
+*.ccp4
+*.map
+*.pdb
+*.cif
+*.mmcif
+*.zip
+
+# Keep only deliberately reviewed synthetic acquisition fixtures.
+*.log
+*.mdoc
+!tests/forward-case/actual.log
+!tests/forward-case/shottest.log
+!tests/forward-case/new_movie.mdoc

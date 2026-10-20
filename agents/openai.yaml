@@ -1,0 +1,6 @@
+interface:
+  display_name: "短肽 EMDB/PDB 存档"
+  short_description: "提取采集参数、只读核对 CryoSPARC、填写保存 OneDep，并生成审核表"
+  default_prompt: "使用 $cryoem-peptide-deposition 先收集 log、显微镜与载网资料，缺少时提示内置 JEOL 默认选项，再只读核对 CryoSPARC、填写保存 OneDep，不正式提交并生成审核表。"
+policy:
+  allow_implicit_invocation: true

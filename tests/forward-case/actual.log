@@ -1,0 +1,12 @@
+# Synthetic fixture only; never an acquisition record or default setting.
+01-Jan-30 10:00:00
+Running CycleTargetDefocus
+defined Range and Step (um) => [ -1.8, -2.2 ], [ 0.4 ].
+TargetDefocus = -1.8 um
+Measured defocus = -1.79 microns
+Focusing was succeeded.
+60 frames are being saved to X:\synthetic_run\movie_0000.tif
+TargetDefocus = -2.2 um
+Measured defocus = -2.18 microns
+Focusing was succeeded.
+60 frames are being saved to X:\synthetic_run\movie_0001.tif

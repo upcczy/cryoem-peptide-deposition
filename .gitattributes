@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.log text eol=lf
+*.mdoc text eol=lf
+VERSION text eol=lf
+LICENSE-MIT.proposed text eol=lf
+*.zip binary
