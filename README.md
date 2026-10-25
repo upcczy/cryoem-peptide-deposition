@@ -15,8 +15,6 @@ An evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata 
 - 有可用浏览器工具并获用户授权时，只读核对 CryoSPARC，填写、普通保存 OneDep，再读回完整值并输出审核表。
 - 无浏览器时，交付逐字段可粘贴内容，明确哪些步骤尚未在网站执行。
 
-它不会操作显微镜或替代科学判断。检查器不登录、不上传、不联网、不修改实验数据；MRC 只读头部，不能证明完整数组无损。默认不运行 CryoSPARC 作业、不接受报告或条款、不正式提交，不自动创建定时任务。
-
 ## 文件入口
 
 | 文件 | 用途 |
