@@ -24,8 +24,8 @@ class PackageTests(unittest.TestCase):
         for relative, title, _ in builder.MODULES:
             self.write(relative, "# " + title + "\n\nSynthetic package text.\n")
         self.write("README.md", "Synthetic fixture, not scientific evidence.\n")
-        self.write("references/licensing-review.md", "Human choice is pending.\n")
-        self.write("assets/mit-text-proposal.txt", "Synthetic license placeholder used only by unit tests.\n")
+        self.write("references/licensing.md", "MIT license applies to this synthetic fixture.\n")
+        self.write("LICENSE", "MIT License\n\nSynthetic test copyright.\n")
         self.archive = self.root / "dist" / (builder.NAME + "-0.1.0.zip")
 
     def tearDown(self):
@@ -52,11 +52,13 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8"))
         manifest = json.loads((self.root / "manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["version"], "0.1.0")
-        self.assertEqual(manifest["license_status"], "pending-human-review")
+        self.assertEqual(manifest["license_status"], "MIT")
         self.assertNotIn(str(self.root), json.dumps(manifest))
         names = {record["path"] for record in manifest["files"]}
         self.assertTrue(names.isdisjoint(private))
         self.assertIn("config.example.json", names)
+        self.assertIn("LICENSE", names)
+        self.assertIn("INSTALL.md", names)
         for name in names:
             self.assertFalse(Path(name).is_absolute())
             self.assertNotIn("..", Path(name).parts)

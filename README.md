@@ -2,9 +2,25 @@
 
 用于化学合成线性短肽及其装配体的 cryo-EM 结构存档助手：从采集与处理证据获取参数，准备 EMDB/PDB OneDep 表单，保存后生成审核表。支持单颗粒与螺旋重构，以及先 EMDB、后关联 PDB 的路线。
 
-**状态：0.1.0 公开审核候选；仓库已公开，尚未发布正式 Release；许可证待维护者确认。** [MIT 文本草案](assets/mit-text-proposal.txt) 仅供审核，尚未授予开源许可，见 [许可待审核说明](references/licensing-review.md)。
+**版本：0.1.0 · [MIT License](LICENSE) · Copyright (c) 2026 fduczy**
 
-An evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata tools, browser-assisted form preparation, and saved-value review; no formal submission by default. The repository is public as a review candidate. No formal release or open-source license has been issued.
+An MIT-licensed, evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata tools, browser-assisted form preparation, and saved-value review; no formal submission by default.
+
+## 下载与安装
+
+- [v0.1.0 Release 与下载附件](https://github.com/upcczy/cryoem-peptide-deposition/releases/tag/v0.1.0)
+- [完整 skill ZIP](https://github.com/upcczy/cryoem-peptide-deposition/releases/download/v0.1.0/cryoem-peptide-deposition-0.1.0.zip)
+- [便携 Markdown 手册](https://github.com/upcczy/cryoem-peptide-deposition/releases/download/v0.1.0/cryoem-peptide-deposition-0.1.0-handbook.md)
+
+另一台电脑可下载完整 ZIP 后让 Codex 按 [安装说明](INSTALL.md) 安装，也可直接对 Codex 说：
+
+```text
+请使用 $skill-installer 安装 upcczy/cryoem-peptide-deposition 的 v0.1.0 标签。
+skill 位于仓库根目录，安装名为 cryoem-peptide-deposition。
+先检查同名 skill，不覆盖已有私人版本；安装后核对文件与调用入口。
+```
+
+安装完成后，在下一条消息以 `$cryoem-peptide-deposition` 调用。网站登录和浏览器工具由新电脑的环境配置；它们不随下载包转移。
 
 ## 能做什么
 
@@ -21,6 +37,7 @@ An evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata 
 |---|---|
 | [SKILL.md](SKILL.md) | AI 任务入口、证据流程和操作终点 |
 | [AGENTS.md](AGENTS.md) | 本目录的简短查找与维护规则 |
+| [INSTALL.md](INSTALL.md) | 下载、跨电脑安装、调用与版本更新 |
 | [OneDep 逐页指南](references/onedep-field-guide.md) | 文件类型、字段、报告与模型准备 |
 | [采集参数指南](references/acquisition-metadata.md) | 设备 profile、批次取证、单位和未知项 |
 | [JEOL CRYO ARM 300 默认选项](references/jeol-cryoarm300-default-profile.md) | 维护者已授权的设备/铜网配置与历史采集候选，缺资料时供用户选用 |
@@ -62,7 +79,7 @@ python scripts/inspect_inputs.py --log actual.log > records/inspection.json
 
 ## 在 AI 环境中使用
 
-**Codex：**将整个包安装到当前环境的 skills 目录后，以 `$cryoem-peptide-deposition` 调用；支持按描述自动识别。安装前确认没有同名私人 skill，避免覆盖。此公开候选保留相同技能名，不能与同名私人版本混装后期望二者各自独立。
+**Codex：**将整个包安装到当前环境的 skills 目录后，以 `$cryoem-peptide-deposition` 调用；支持按描述自动识别。安装前确认没有同名私人 skill，避免覆盖。此版本保留相同技能名，不能与同名私人版本混装后期望二者各自独立。
 
 **其他 AI：**直接提供 `SKILL.md`，由它按需读取参考文件；只能提供单文件时使用构建的手册。脚本使用常规 Python，浏览器调用遵循各环境实际提供的工具文档，不依赖硬编码的 Codex 工具名。
 
@@ -86,16 +103,16 @@ ZIP 仅收录脚本中逐文件列出的允许清单，不递归打包整个目�
 
 ## 隐私与 Git
 
-此候选包使用合成 fixture 和演练示例，另含维护者已授权公开的设备/载网参数及注明范围的历史采集参考；未带实际作者、存档会话、实验日志、模型或真实截图。运行产生的数据应放在包外或 `records/`，私人档案用 `config.local.json`。`.gitignore` 能减少误加入的机会，但不会删除已跟踪内容或历史提交里的资料。
+此发行包使用合成 fixture 和演练示例，另含维护者已授权公开的设备/载网参数及注明范围的历史采集参考；未带实际存档作者、存档会话、实验日志、模型或真实截图。运行产生的数据应放在包外或 `records/`，私人档案用 `config.local.json`。`.gitignore` 能减少误加入的机会，但不会删除已跟踪内容或历史提交里的资料。
 
 准备提交代码时，先检查 `git status --short` 和暂存差异，明确确认文件再提交，不将真实实验目录整体加入 Git。构建允许清单只约束 ZIP，不能代替 Git 暂存区的内容审查。检查器和构建器均不调用 `git push` 或创建远程仓库。
 
-## 正式发行前由维护者审核
+## 后续版本维护
 
-1. 确认第三方来源、版权主体和许可证，按 [许可待审核说明](references/licensing-review.md) 定稿。
+1. 保留 [LICENSE](LICENSE) 和 [署名与第三方资料说明](references/licensing.md)。
 2. 每次同步前确认公开树与历史提交没有私人资料，核对目标仓库。
 3. 运行上面的检查，审核 ZIP 与手册；正式 Release 或后续外部变更按当次任务授权处理。
 
-公开仓库：[upcczy/cryoem-peptide-deposition](https://github.com/upcczy/cryoem-peptide-deposition)。公开可见不等于已经选定开源许可证。
+公开仓库：[upcczy/cryoem-peptide-deposition](https://github.com/upcczy/cryoem-peptide-deposition)。建议安装固定标签版本，更新后重新核对本地技能；GitHub 推送不会自动替换已安装的副本。
 
 本项目不保证任何数据库接受提交。实际表单、词表和帮助优先；参考资料中的既有链接不等于本版本逐页重新核实了网站要求。

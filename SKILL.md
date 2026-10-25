@@ -7,7 +7,7 @@ description: Prepare and review EMDB/PDB OneDep depositions for chemically synth
 
 把本批实验、处理记录和文件检查结果转换为 OneDep 可填写内容，并交付实际保存值的审核表。适用于 EMDB 地图、PDB 坐标联合提交，或先地图、后模型的关联提交。
 
-本公开候选版不带真实实验文件或个人身份记录，另附维护者授权公开的 JEOL CRYO ARM 300 与铜网参考 profile。它可在资料缺少时作为默认选项提示用户；采用的默认值与当批实测值分别标记。旧 class 和旧软件版本不足以作为新条目的参数证据。
+本公开版本不带真实实验文件或个人身份记录，另附维护者授权公开的 JEOL CRYO ARM 300 与铜网参考 profile。它可在资料缺少时作为默认选项提示用户；采用的默认值与当批实测值分别标记。旧 class 和旧软件版本不足以作为新条目的参数证据。
 
 ## 按当前任务读文件
 

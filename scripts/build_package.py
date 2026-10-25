@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the public candidate handbook, SHA-256 manifest and allowlisted ZIP.
+"""Build the versioned handbook, SHA-256 manifest and allowlisted ZIP.
 
 Python 3.10+, standard library only. This helper writes package deliverables,
 not experiment files. It never uploads, publishes, deletes extra installed
-files, or grants permission to publish the license proposal.
+files, or changes the project's license.
 """
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ import zipfile
 NAME = "cryoem-peptide-deposition"
 MODULES = [
     ("AGENTS.md", "Directory entry", "directory-entry"),
+    ("INSTALL.md", "Installation and invocation", "installation"),
     ("SKILL.md", "Skill workflow", "skill-workflow"),
     ("references/onedep-field-guide.md", "OneDep field guide", "onedep-field-guide"),
     ("references/acquisition-metadata.md", "Acquisition metadata", "acquisition-metadata"),
@@ -29,7 +30,7 @@ MODULES = [
 # This list is deliberately explicit. New package files require review here;
 # merely placing a file under scripts/, tests/ or references/ is not enough.
 OPTIONAL_FILES = (
-    "README.md", "references/licensing-review.md", "assets/mit-text-proposal.txt", "config.example.json",
+    "README.md", "LICENSE", "references/licensing.md", "config.example.json",
     ".gitignore", ".gitattributes", "agents/openai.yaml", ".github/workflows/ci.yml",
     "scripts/inspect_inputs.py", "scripts/build_package.py",
     "tests/test_inspect_inputs.py", "tests/test_build_package.py",
@@ -88,9 +89,9 @@ def read_version(root: Path) -> str:
 def build_handbook(root: Path, version: str) -> Path:
     anchors = {(root / relative).resolve(): anchor for relative, _, anchor in MODULES}
     result = [
-        "# Peptide cryo-EM deposition handbook", "", "Candidate version: " + version + ".",
+        "# Peptide cryo-EM deposition handbook", "", "Version: " + version + ".",
         "Generated from the package Markdown. The example is synthetic; it is not a batch-default table.",
-        "Public review candidate; no formal release or adopted license. See references/licensing-review.md.",
+        "MIT License. Copyright (c) 2026 fduczy. See LICENSE and references/licensing.md.",
         "Read this single handbook for portable handoff, or use the individual modules in the full package.",
         "", "## Contents", "",
     ]
@@ -241,9 +242,9 @@ def main(argv=None) -> int:
             manifest_path = safe_source(root, "manifest.json")
             manifest = {
                 "skill": NAME, "version": version, "hash_algorithm": "SHA-256",
-                "license_status": "pending-human-review",
-                "license_proposal": "assets/mit-text-proposal.txt", "license_review": "references/licensing-review.md",
-                "publication_status": "public-review-candidate-no-release",
+                "license_status": "MIT", "license_file": "LICENSE",
+                "copyright": "Copyright (c) 2026 fduczy",
+                "publication_status": "versioned-release-package",
                 "files": [
                     {"path": path.relative_to(root).as_posix(), "bytes": path.stat().st_size, "sha256": sha256(path)}
                     for path in payload_files(root) if path != manifest_path
@@ -264,7 +265,7 @@ def main(argv=None) -> int:
             output = {"skill": NAME, "version": version, "handbook": handbook.name,
                       "zip": archive.name, "payload_files": len(files), "manifest_hashes_match": True,
                       "zip_hashes_match": True, "installed_hashes_match": True if args.install_dir else None,
-                      "license_status": "pending-human-review", "publication_status": "public-review-candidate-no-release"}
+                      "license_status": "MIT", "publication_status": "versioned-release-package"}
         print(json.dumps(output, ensure_ascii=False, indent=2))
         return 0
     except (OSError, ValueError, KeyError, RuntimeError, zipfile.BadZipFile) as error:
