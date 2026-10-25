@@ -6,4 +6,4 @@
 - 默认只读核对 CryoSPARC；OneDep 按当次授权填写、保存并留供审核。维护包时不访问或操作真实提交会话，不改原始数据或模型。
 - 编辑模块后运行测试，再运行 `python scripts/build_package.py` 重建手册、manifest 和 ZIP。打包使用允许清单；新增公开文件需同步允许清单，不能改成递归收录整个目录。
 - `deposition-handbook.md`、`manifest.json` 和 `dist/` 是构建产物。只编辑源模块。安装是显式操作；不要用公开候选覆盖用户正在使用的私人同名 skill。
-- 许可证仍待维护者确认，见 [LICENSE-REVIEW.md](LICENSE-REVIEW.md)。不因本地 Git commit 或构建成功而宣称已发布、已获得开源授权或已通过网站审核。
+- 本仓库已作为审核候选公开，尚无正式 Release；许可证仍待维护者确认，见 [许可说明](references/licensing-review.md)。不因本地 Git commit、构建或仓库公开而宣称已获得开源授权或已通过存档网站审核。

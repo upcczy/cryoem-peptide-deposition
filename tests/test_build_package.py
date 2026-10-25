@@ -24,8 +24,8 @@ class PackageTests(unittest.TestCase):
         for relative, title, _ in builder.MODULES:
             self.write(relative, "# " + title + "\n\nSynthetic package text.\n")
         self.write("README.md", "Synthetic fixture, not scientific evidence.\n")
-        self.write("LICENSE-REVIEW.md", "Human choice is pending.\n")
-        self.write("LICENSE-MIT.proposed", "Synthetic license placeholder used only by unit tests.\n")
+        self.write("references/licensing-review.md", "Human choice is pending.\n")
+        self.write("assets/mit-text-proposal.txt", "Synthetic license placeholder used only by unit tests.\n")
         self.archive = self.root / "dist" / (builder.NAME + "-0.1.0.zip")
 
     def tearDown(self):

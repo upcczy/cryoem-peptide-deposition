@@ -29,7 +29,7 @@ MODULES = [
 # This list is deliberately explicit. New package files require review here;
 # merely placing a file under scripts/, tests/ or references/ is not enough.
 OPTIONAL_FILES = (
-    "README.md", "LICENSE-REVIEW.md", "LICENSE-MIT.proposed", "config.example.json",
+    "README.md", "references/licensing-review.md", "assets/mit-text-proposal.txt", "config.example.json",
     ".gitignore", ".gitattributes", "agents/openai.yaml", ".github/workflows/ci.yml",
     "scripts/inspect_inputs.py", "scripts/build_package.py",
     "tests/test_inspect_inputs.py", "tests/test_build_package.py",
@@ -90,7 +90,7 @@ def build_handbook(root: Path, version: str) -> Path:
     result = [
         "# Peptide cryo-EM deposition handbook", "", "Candidate version: " + version + ".",
         "Generated from the package Markdown. The example is synthetic; it is not a batch-default table.",
-        "License proposal and publication remain subject to human review. See LICENSE-REVIEW.md.",
+        "Public review candidate; no formal release or adopted license. See references/licensing-review.md.",
         "Read this single handbook for portable handoff, or use the individual modules in the full package.",
         "", "## Contents", "",
     ]
@@ -242,8 +242,8 @@ def main(argv=None) -> int:
             manifest = {
                 "skill": NAME, "version": version, "hash_algorithm": "SHA-256",
                 "license_status": "pending-human-review",
-                "license_proposal": "LICENSE-MIT.proposed", "license_review": "LICENSE-REVIEW.md",
-                "publication_status": "local-candidate-not-published",
+                "license_proposal": "assets/mit-text-proposal.txt", "license_review": "references/licensing-review.md",
+                "publication_status": "public-review-candidate-no-release",
                 "files": [
                     {"path": path.relative_to(root).as_posix(), "bytes": path.stat().st_size, "sha256": sha256(path)}
                     for path in payload_files(root) if path != manifest_path
@@ -264,7 +264,7 @@ def main(argv=None) -> int:
             output = {"skill": NAME, "version": version, "handbook": handbook.name,
                       "zip": archive.name, "payload_files": len(files), "manifest_hashes_match": True,
                       "zip_hashes_match": True, "installed_hashes_match": True if args.install_dir else None,
-                      "license_status": "pending-human-review", "publication_status": "local-candidate-not-published"}
+                      "license_status": "pending-human-review", "publication_status": "public-review-candidate-no-release"}
         print(json.dumps(output, ensure_ascii=False, indent=2))
         return 0
     except (OSError, ValueError, KeyError, RuntimeError, zipfile.BadZipFile) as error:

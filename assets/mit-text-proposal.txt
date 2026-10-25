@@ -1,3 +1,8 @@
+DRAFT FOR REVIEW ONLY - NOT THE LICENSE OF THIS REPOSITORY
+
+The following is an unadopted MIT template. It grants no project license.
+See references/licensing-review.md for the pending decision.
+
 MIT License
 
 Copyright (c) [year] [copyright holder]

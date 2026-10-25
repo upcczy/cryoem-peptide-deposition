@@ -2,9 +2,9 @@
 
 用于化学合成线性短肽及其装配体的 cryo-EM 结构存档助手：从采集与处理证据获取参数，准备 EMDB/PDB OneDep 表单，保存后生成审核表。支持单颗粒与螺旋重构，以及先 EMDB、后关联 PDB 的路线。
 
-**状态：0.1.0 本地公开候选，尚未发布；许可证待维护者确认。** [MIT 文本提案](LICENSE-MIT.proposed) 仅供审核，尚未授予开源许可，见 [许可待审核说明](LICENSE-REVIEW.md)。
+**状态：0.1.0 公开审核候选；仓库已公开，尚未发布正式 Release；许可证待维护者确认。** [MIT 文本草案](assets/mit-text-proposal.txt) 仅供审核，尚未授予开源许可，见 [许可待审核说明](references/licensing-review.md)。
 
-An evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata tools, browser-assisted form preparation, and saved-value review; no formal submission by default. This is a local release candidate with licensing pending review.
+An evidence-led AI workflow for peptide cryo-EM depositions. Read-only metadata tools, browser-assisted form preparation, and saved-value review; no formal submission by default. The repository is public as a review candidate. No formal release or open-source license has been issued.
 
 ## 能做什么
 
@@ -92,10 +92,12 @@ ZIP 仅收录脚本中逐文件列出的允许清单，不递归打包整个目�
 
 准备提交代码时，先检查 `git status --short` 和暂存差异，明确确认文件再提交，不将真实实验目录整体加入 Git。构建允许清单只约束 ZIP，不能代替 Git 暂存区的内容审查。检查器和构建器均不调用 `git push` 或创建远程仓库。
 
-## 发布前由维护者审核
+## 正式发行前由维护者审核
 
-1. 确认公开范围、第三方来源、版权主体和许可证，按 [许可待审核说明](LICENSE-REVIEW.md) 定稿。
-2. 选择仓库名称、介绍和 GitHub 账号；确认公开树与历史提交没有私人资料。
-3. 运行上面的检查，审核 ZIP 与手册，再明确授权创建远程仓库及推送。当前包不预设已存在的 GitHub URL。
+1. 确认第三方来源、版权主体和许可证，按 [许可待审核说明](references/licensing-review.md) 定稿。
+2. 每次同步前确认公开树与历史提交没有私人资料，核对目标仓库。
+3. 运行上面的检查，审核 ZIP 与手册；正式 Release 或后续外部变更按当次任务授权处理。
+
+公开仓库：[upcczy/cryoem-peptide-deposition](https://github.com/upcczy/cryoem-peptide-deposition)。公开可见不等于已经选定开源许可证。
 
 本项目不保证任何数据库接受提交。实际表单、词表和帮助优先；参考资料中的既有链接不等于本版本逐页重新核实了网站要求。
